@@ -49,37 +49,40 @@ class FetchWebview {
         const nonce = getNonce();
 
         return `<!DOCTYPE html>
-			<html lang="en">
-			<head>
-				<meta charset="UTF-8">
-				<meta http-equiv="Content-Security-Policy" content="
-                    default-src 'none'; 
-                    connect-src ${webview.cspSource}; 
-                    script-src 'nonce-${nonce}';
-                    style-src 'unsafe-inline';
-                ">
-				
-				<title>Sample Webview</title>
-			</head>
-            <body>
-                <table>
-                    <tr>
-                        <td>File to fetch:</td>
-                        <td><input style="width:650px;" id="file_to_fetch" type="text" value="${vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js').path}" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <input id="fetch_button" type="submit" />
-                        </td>
-                    </tr>
-                </table>
+		<html lang="en">
 
-                <div id="output_div"></div>
-            
-                <script nonce="${nonce}" src="${scriptUri}"></script>
-            </body>
-			</html>`;
+		<head>
+		    <meta charset="UTF-8">
+		    <meta http-equiv="Content-Security-Policy" content="
+				    default-src 'none'; 
+				    connect-src ${webview.cspSource}; 
+				    script-src 'nonce-${nonce}';
+				    style-src 'unsafe-inline';
+				">
+
+		    <title>Sample Webview</title>
+		</head>
+
+		<body>
+		    <table>
+			<tr>
+			    <td>File to fetch:</td>
+			    <td><input style="width:650px;" id="file_to_fetch" type="text"
+				    value="${vscode.Uri.joinPath(this._extensionUri, 'media', 'main.js').path}" /></td>
+			</tr>
+			<tr>
+			    <td></td>
+			    <td>
+				<input id="fetch_button" type="submit" />
+			    </td>
+			</tr>
+		    </table>
+		    <div id="output_div"></div>
+
+		    <script nonce="${nonce}" src="${scriptUri}"></script>
+		</body>
+
+		</html>`;
     }
 }
 
